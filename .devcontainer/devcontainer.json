@@ -1,0 +1,14 @@
+{
+  "name": "AdaPT Docker Environment",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "forwardPorts": [8888],
+  "postCreateCommand": "docker pull dimdano/adapt-cpu:0.1",
+  "settings": {
+    "terminal.integrated.defaultProfile.linux": "bash"
+  },
+  "extensions": [
+    "ms-azuretools.vscode-docker"
+  ]
+}
