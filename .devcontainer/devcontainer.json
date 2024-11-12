@@ -1,14 +1,10 @@
 {
-  "name": "AdaPT Docker Environment",
-  "build": {
-    "dockerfile": "Dockerfile"
-  },
-  "forwardPorts": [8888],
-  "postCreateCommand": "docker pull dimdano/adapt-cpu:0.1",
-  "settings": {
-    "terminal.integrated.defaultProfile.linux": "bash"
-  },
-  "extensions": [
-    "ms-azuretools.vscode-docker"
-  ]
+  "name": "Adapt CPU Development Container",
+  "image": "dimdano/adapt-cpu:0.1",
+  "mounts": [
+    "source=${localWorkspaceFolder},target=/workspace/adapt,type=bind"
+  ],
+  "postCreateCommand": "HERE=$(pwd) && user=$(whoami) && uid=$(id -u) && gid=$(id -g) && echo 'Setting up environment for $user with UID=$uid and GID=$gid'",
+  "remoteUser": "root",
+  "workspaceFolder": "/workspace"
 }
